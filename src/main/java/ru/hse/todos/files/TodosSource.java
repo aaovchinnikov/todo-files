@@ -2,6 +2,6 @@ package ru.hse.todos.files;
 
 import java.util.List;
 
-public interface Todos {
+public interface TodosSource {
 	List<Todo> todos();
 }

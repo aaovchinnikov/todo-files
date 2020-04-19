@@ -1,6 +1,8 @@
-package ru.hse.todos.files;
+package ru.hse.todos.files.outputs;
 
 import org.json.JSONWriter;
+
+import ru.hse.todos.files.Output;
 
 /**
  * Encapsulated JSONWriter is not reusable. 

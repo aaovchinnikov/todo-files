@@ -9,6 +9,11 @@ import java.util.List;
 
 import org.json.JSONWriter;
 
+import ru.hse.todos.files.outputs.CsvPrintStreamOutput;
+import ru.hse.todos.files.outputs.JsonWriterOutput;
+import ru.hse.todos.files.outputs.XmlPrintStreamOutput;
+import ru.hse.todos.files.sources.JsonFile;
+
 public class Main {
 
 	public static void main(String[] args) throws IOException {

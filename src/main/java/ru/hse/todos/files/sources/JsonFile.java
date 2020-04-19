@@ -1,4 +1,4 @@
-package ru.hse.todos.files;
+package ru.hse.todos.files.sources;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,7 +10,11 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public final class JsonFile implements Todos {
+import ru.hse.todos.files.SimpleTodo;
+import ru.hse.todos.files.Todo;
+import ru.hse.todos.files.TodosSource;
+
+public final class JsonFile implements TodosSource {
 	private final Path path;
 	
 	/**
@@ -42,5 +46,4 @@ public final class JsonFile implements Todos {
 			return Collections.emptyList();
 		}
 	}
-
 }

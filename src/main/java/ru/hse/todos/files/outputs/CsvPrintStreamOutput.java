@@ -1,10 +1,12 @@
-package ru.hse.todos.files;
+package ru.hse.todos.files.outputs;
 
 import java.io.PrintStream;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import ru.hse.todos.files.Output;
 
 /**
  * Not concurrency-safe 

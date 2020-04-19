@@ -1,5 +1,10 @@
 package ru.hse.todos.files;
 
+/**
+ * Output for single plain object.
+ * @author Alexander Ovchinnikov
+ *
+ */
 public interface Output {
 	/**
 	 * Adds named portion of data to be accumulated for outputting. Invoke
