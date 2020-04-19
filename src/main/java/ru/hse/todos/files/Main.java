@@ -15,6 +15,7 @@ public class Main {
 		final List<Todo> todos = new JsonFile(
 				Paths.get("todos.json")		
 		).todos();
+
 		final Output csvFile= new CsvPrintStreamOutput(
 			new PrintStream(
 				"output.csv",
@@ -24,6 +25,7 @@ public class Main {
 		for(Todo todo : todos) {
 			todo.printTo(csvFile);
 		}
+		
 		final Output std = new CsvPrintStreamOutput(
 			System.out
 		);
@@ -42,6 +44,14 @@ public class Main {
 					new JSONWriter(System.out)
 				)		
 			);
+		}
+		System.out.println();
+		final Output xml = new XmlPrintStreamOutput(
+			System.out,
+			"todo"
+		);
+		for(Todo todo : todos) {
+			todo.printTo(xml);
 		}
 	}
 }
