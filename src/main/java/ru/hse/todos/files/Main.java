@@ -1,62 +1,24 @@
 package ru.hse.todos.files;
 
 import java.io.IOException;
-import java.io.PrintStream;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
-import java.util.Collections;
-import java.util.List;
 
 import org.json.JSONWriter;
 
 import ru.hse.todos.files.outputs.CsvPrintStreamOutput;
 import ru.hse.todos.files.outputs.JsonWriterOutput;
 import ru.hse.todos.files.outputs.XmlPrintStreamOutput;
-import ru.hse.todos.files.sources.JsonFile;
+import ru.hse.todos.files.sources.JsonArrayFile;
 
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-		final List<Todo> todos = new JsonFile(
-				Paths.get("todos.json")		
-		).todos();
-
-		final Output csvFile= new CsvPrintStreamOutput(
-			new PrintStream(
-				"output.csv",
-				StandardCharsets.UTF_8
-			)
-		);
-		for(Todo todo : todos) {
-			todo.printTo(csvFile);
-		}
-		
-		final Output std = new CsvPrintStreamOutput(
-			System.out
-		);
-		for(Todo todo : todos) {
-			todo.printTo(std);
-		}
-		
-		final List<Todo> readOnlyTodos = Collections.unmodifiableList(todos);
-		System.out.println(readOnlyTodos);
-		todos.add(new SimpleTodo("Test3 name", "Test3 description"));
-		System.out.println(readOnlyTodos);
-		
-		for(Todo todo : todos) {
-			todo.printTo(
-				new JsonWriterOutput(
-					new JSONWriter(System.out)
-				)		
-			);
-		}
-		System.out.println();
-		final Output xml = new XmlPrintStreamOutput(
-			System.out,
-			"todo"
-		);
-		for(Todo todo : todos) {
-			todo.printTo(xml);
-		}
+		Todo todo = new JsonTodo("	{\n" + 
+				"		\"name\" : \"Test name\",\n" + 
+				"		\"description\" : \"Test description\"\n" + 
+				"	}");
+		todo.printTo(new CsvPrintStreamOutput(System.out));
+		todo.printTo(new JsonWriterOutput(new JSONWriter(System.out)));
+		todo.printTo(new XmlPrintStreamOutput(System.out, "todo"));
 	}
 }
